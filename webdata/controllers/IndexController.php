@@ -80,7 +80,7 @@ class IndexController extends Pix_Controller
         $new_values = $track->toArray();
 
         $title = "ContentTrack 您追蹤中的設定被修改: " . $track->title;
-        $content = "網址: http://contenttrack.ronny.tw/?id={$track->id}\n";
+        $content = "網址: http://" . getenv('CONTENTTRACK_DOMAIN') . "/?id={$track->id}\n";
         $content .= "修改人: " . $this->biew->user->user_name . "\n";
         $content .= "原值: " . json_encode($old_values, JSON_PRETTY_PRINT |JSON_UNESCAPED_UNICODE) . "\n";
         $content .= "新值: " . json_encode($new_values, JSON_PRETTY_PRINT |JSON_UNESCAPED_UNICODE) . "\n";

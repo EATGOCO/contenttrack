@@ -194,7 +194,7 @@ class Track extends Pix_Table
             foreach ($logs as $log) {
                 $content .= "標題: {$log['track']->title}\n";
                 $content .= "原始網址: {$log['track']->url}\n";
-                $content .= "紀錄網址: http://contenttrack.ronny.tw/?id={$log['track']->id}#track-logs\n";
+                $content .= "紀錄網址: http://" . getenv('CONTENTTRACK_DOMAIN') . "/?id={$log['track']->id}#track-logs\n";
                 if ($log['last_hit']) {
                     $content .= "與 " . date('Y/m/d H:i:s', $log['last_hit']) . " 內容相同\n";
                 }
