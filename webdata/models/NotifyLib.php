@@ -18,7 +18,7 @@ class NotifyLib
             ));
         }
         $ses = new AmazonSES();
-        //$ses->set_region(AmazonSES::REGION_TOKYO);
+        $ses->set_region('email.us-west-2.amazonaws.com');
         $ret = $ses->send_email(
             getenv('SES_MAIL'),
             array(
@@ -28,6 +28,7 @@ class NotifyLib
                 'Subject.Data' => $title,
                 'Body.Text.Data' => $body,
             )
-        );
+          );
+        return $ret;
     }
 }
