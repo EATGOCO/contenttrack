@@ -11,6 +11,8 @@ Pix_Loader::registerAutoLoad();
 
 if (file_exists(__DIR__ . '/config.php')) {
     include(__DIR__ . '/config.php');
+} elseif (file_exists('/services/config/config-contenttrack.php')) {
+  include('/services/config/config-contenttrack.php');
 }
 Pix_Table::setLongQueryTime(3);
 // TODO: 之後要搭配 geoip
