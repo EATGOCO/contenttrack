@@ -87,13 +87,11 @@ class TrackRow extends Pix_Table_Row
                 );
             }
 
+            array_shift($matches);
             return array(
                 'http_code' => $obj['http_code'],
                 'status' => 'found',
-                'data' => array_map(function($each_matches){
-                  array_shift($each_matches);
-                  return $each_matches;
-                }, $matches),
+                'data' => $matches,
             );
         case 3: // 檔案 MD5
             $curl = curl_init();
