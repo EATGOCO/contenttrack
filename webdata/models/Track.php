@@ -68,6 +68,9 @@ class TrackRow extends Pix_Table_Row
         curl_setopt($curl, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
         curl_setopt($curl, CURLOPT_URL, $this->url);
         $content = curl_exec($curl);
+        if (preg_match('#charset=big5#i', $content)) {
+          $content = iconv('big5', 'utf-8', $content);
+        }
         $info = curl_getinfo($curl);
         return array(
             'http_code' => $info['http_code'],
